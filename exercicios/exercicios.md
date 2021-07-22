@@ -122,7 +122,7 @@ Após alterar e colocar o nome correto das imagens, rodar o comando de up -d par
 $ cd ..
 $ vi docker-compose.yml
 $ docker-compose -f docker-compose.yml up -d
-$ curl <ip>:80 
+$ curl 3.87.89.60:80 
 	----------------------------------
 	This page has been viewed 29 times
 	----------------------------------
@@ -133,15 +133,6 @@ Para terminar nossa aplicação temos que rodar o comando do docker-compose abai
 ```sh
 $ docker-compose down
 ```
-
-
-
-
-
-
-
-
-
 
 
 # Aula 6 - Rancher - Single Node
@@ -174,7 +165,7 @@ $ rancher.<dominio> = IP do host A
 
 
 
-# Aula 7 - Kubernetes
+# Aula 7 - Kubernetes_2
 
 ### Criar cluster Kubernetes
 
