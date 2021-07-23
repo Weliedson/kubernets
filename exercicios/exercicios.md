@@ -53,7 +53,7 @@ Com os pacotes instalados, agora iremos baixar o código fonte e começaremos a 
 ```sh
 $ cd /home/ubuntu
 $ git clone https://github.com/jonathanbaraldi/devops
-$ cd devops/exercicios/app
+$ cd /home/ubuntu/kubernets/exercicios/app
 ```
 
 
@@ -153,18 +153,6 @@ $ rancher.<dominio> = IP do host A
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 # Aula 7 - Kubernetes_2
 
 ### Criar cluster Kubernetes
@@ -176,7 +164,7 @@ Após fazer a configuração, o Rancher irá exibir um comando de docker run, pa
 
 Adicionar o host B e host C. 
 
-Pegar o seu comando no seu rancher.
+docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run rancher/rancher-agent:v2.4.3 --server https://weliedson.com.br --token 7d8l2wdfq5cqvx5sbcvzb2gdvpld2srnmq6g5gmqvq8558fhzwlb29 --ca-checksum 496b34553020fcdccc0c4e96f6245c6a110d80c2729b06f4474e1eb11e64e74f --node-name k8s-1 --etcd --controlplane --worker
 ```sh
 $ docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run rancher/rancher-agent:v2.4.3 --server https://rancher.dev-ops-ninja.com --token 8xf5r2ttrvvqcxdhwsbx9cvb7s9wgwdmgfbmzr4mt7smjbg4jgj292 --ca-checksum 61ac25d1c389b26c5c9acd98a1c167dbfb394c6c1c3019d855901704d8bae282 --node-name k8s-1 --etcd --controlplane --worker
 ```
@@ -211,6 +199,7 @@ $ sudo apt-get install -y kubectl
 Com o kubectl instalado, pegar as credenciais de acesso no Rancher e configurar o kubectl.
 
 ```sh
+$ mkdir -p ~/.kube/
 $ vi ~/.kube/config
 $ kubectl get nodes
 ```
@@ -276,8 +265,8 @@ O Graylog é a aplicação que iremos usar como agregador de logs do cluster. Os
 Para instalar o Graylog, iremos aplicar o template dele, que está em graylog.yml. Para isso, é preciso que sejam editados 2 pontos no arquivo.
 
 
-- Linha 264 - value: http://graylog.rancher.<dominino>/api
-- Linha 340 - host: graylog.rancher.<dominio>
+- Linha 264 - value: http://graylog.rancher.weliedson.com.br/api
+- Linha 340 - host: graylog.rancher.weliedson.com.br
 
 Substituir o {user}, pelo nome do aluno. Após substituir, aplicar e entrar no Graylog para configurar.
 ```sh
